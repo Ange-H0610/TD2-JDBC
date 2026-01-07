@@ -6,6 +6,7 @@ public class Player {
     private int age;
     private PlayerPositionEnum position;
     private Team team;
+    private Integer goalNb;
 
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
@@ -21,4 +22,14 @@ public class Player {
 
     public Team getTeam() { return team; }
     public void setTeam(Team team) { this.team = team; }
+
+    
+    public Integer getGoalNb() {
+    return goalNb;
+}
+
+public void setGoalNb(Integer goalNb) {
+    this.goalNb = goalNb;
+}
+
 }
