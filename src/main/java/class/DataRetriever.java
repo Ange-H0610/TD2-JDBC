@@ -4,7 +4,7 @@ import java.util.List;
 
 public class DataRetriever {
 
-    // a) Récupérer une équipe par son ID avec ses joueurs
+  
     public Team findTeamById(Integer id) {
         Team team = null;
         String teamQuery = "SELECT * FROM team WHERE id = ?";
@@ -14,7 +14,6 @@ public class DataRetriever {
         try (Connection conn = DBConnection.getDBConnection();
              PreparedStatement teamStmt = conn.prepareStatement(teamQuery)) {
 
-            // Récupération de l'équipe
             teamStmt.setInt(1, id);
             ResultSet teamRs = teamStmt.executeQuery();
 
@@ -24,7 +23,7 @@ public class DataRetriever {
                 team.setName(teamRs.getString("name"));
                 team.setContinent(ContinentEnum.valueOf(teamRs.getString("continent")));
 
-                // Récupération des joueurs de l'équipe
+          
                 try (PreparedStatement playersStmt = conn.prepareStatement(playersQuery)) {
                     playersStmt.setInt(1, id);
                     ResultSet playersRs = playersStmt.executeQuery();
@@ -52,12 +51,12 @@ public class DataRetriever {
         return team;
     }
 
-    // b) Récupérer la liste des joueurs avec pagination
+
     public List<Player> findPlayers(int page, int size) {
         List<Player> players = new ArrayList<>();
         String query = "SELECT * FROM player ORDER BY id LIMIT ? OFFSET ?";
 
-        // Calcul de l'offset
+        
         int offset = page * size;
 
         try (Connection conn = DBConnection.getDBConnection();
@@ -75,8 +74,6 @@ public class DataRetriever {
                 player.setAge(rs.getInt("age"));
                 player.setPosition(PlayerPositionEnum.valueOf(rs.getString("position")));
 
-                // Note: Pour récupérer l'équipe complète, vous pourriez faire une jointure
-                // ou appeler findTeamById si nécessaire
 
                 players.add(player);
             }
