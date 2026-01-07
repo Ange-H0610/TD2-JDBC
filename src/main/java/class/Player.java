@@ -1,4 +1,4 @@
-package model;
+import org.PlayerPositionEnum;
 
 public class Player {
     private int id;
@@ -8,6 +8,18 @@ public class Player {
     private Team team;
     private Integer goalNb;
 
+
+    // Constructeurs
+    public Player() {}
+
+    public Player(int id, String name, int age, PlayerPositionEnum position) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.position = position;
+    }
+
+    // Getters et Setters
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 
@@ -23,13 +35,8 @@ public class Player {
     public Team getTeam() { return team; }
     public void setTeam(Team team) { this.team = team; }
 
-    
-    public Integer getGoalNb() {
-    return goalNb;
-}
+    public Integer getGoalNb() {return goalNb;}
 
-public void setGoalNb(Integer goalNb) {
-    this.goalNb = goalNb;
-}
+    public void setGoalNb(Integer goalNb) {this.goalNb = goalNb;}
 
 }
