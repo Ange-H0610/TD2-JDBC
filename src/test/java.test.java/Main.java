@@ -19,11 +19,3 @@ public class Main {
 }
 
 
-Team team = retriever.findTeamById(1);
-Team savedTeam = retriever.saveTeam(team);
-
-try {
-        System.out.print("Buts après sauvegarde : " + savedTeam.getPlayersGoals() + "\n");
-        } catch (RuntimeException e) {
-        System.out.print("ERREUR : " + e.getMessage() + "\n");
-        }
